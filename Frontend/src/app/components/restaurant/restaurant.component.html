@@ -1,0 +1,86 @@
+<div class="restaurant" *ngIf="restaurant" overflow="scroll">
+  <table border="0">
+    <tr>
+      <td align="right">Restaurant:</td>
+      <td colspan="2" valign="">
+        <b>{{restaurant.restaurantName}}</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">Locations:    </td>
+      <td valign="top"> {{restaurant.nLocations}} </td>
+      <td *ngIf="(listShowing$ | async) == 'Locations'+restaurant.restaurantId">
+          <button (click)="handleHideButton()">hide</button>
+          <app-location *ngFor="let location of restaurant.restaurantLocations" [location]="location">
+            {{location| json}}
+          </app-location>
+      </td>
+      <td *ngIf="(listShowing$ | async) != 'Locations'+restaurant.restaurantId">
+        <button (click)="handleShowListButton('Locations'+restaurant.restaurantId)">show</button>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="top"> Comments:</td>
+      <td valign="top"> {{restaurant.nComments}} </td>
+      <td *ngIf="(listShowing$ | async) == 'RComments'+restaurant.restaurantId">
+        <button (click)="handleHideButton()">hide</button>
+        <app-comment *ngFor="let comment of restaurant.restaurantComments" [comment]="comment">
+          {{comment| json}}
+        </app-comment>
+        <label>Add a comment about this tamale:</label>
+        <br>
+        <textarea id="restaurantCommentText"
+                  name="restaurantCommentText"
+                  [formControl]="comment"
+                  rows="4"
+                  cols="40"></textarea>
+        <br>
+        <button (click)="handleCommentSubmitButton()">submit comment</button>
+      </td>
+      <td *ngIf="(listShowing$ | async) != 'RComments'+restaurant.restaurantId">
+        <button (click)="handleShowListButton('RComments'+restaurant.restaurantId)">show</button>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="top"> Pictures:</td>
+      <td valign="top"> {{restaurant.nImages}} </td>
+      <td *ngIf="(listShowing$ | async) == 'RImages'+restaurant.restaurantId">
+        <button (click)="handleHideButton()">hide</button>
+        <br>
+        <app-image *ngFor="let image of restaurant.restaurantImages" [image]="image">
+        </app-image>
+      </td>
+      <td *ngIf="(listShowing$ | async) != 'RImages'+restaurant.restaurantId">
+        <button (click)="handleShowListButton('RImages'+restaurant.restaurantId)">show</button>
+      </td>
+    </tr>
+    <tr>
+      <td align="right"> <i>Rating:</i>    </td>
+      <td>{{restaurant.restaurantRating}} </td>
+      <td>
+        <app-rating-editor
+          [thingName] = "'Restaurant'"
+          [thingId]   = "restaurant.restaurantId"
+          [userId]    = "userId"
+          [ratings]   = "restaurant.restaurantRatings"
+        >
+        </app-rating-editor>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">Website:</td>
+      <td colspan = "2"><a href="{{restaurant.restaurantWebsite}}">{{restaurant.restaurantWebsite}}</a> </td>
+    </tr>
+  </table>
+  <h3><i><b>{{restaurant.restaurantName}} Tamales:</b></i></h3>
+  <div width="70%">
+    <app-tamale *ngFor="let tamale of restaurant.restaurantTamales"
+                [tamale]="tamale"
+                [userId]="userId"
+                [userName]="userName">
+    </app-tamale>
+    <button (click)=addTamaleButton()>add a tamale</button>
+    <br>
+  </div>
+</div>
+<br> <br> <br>

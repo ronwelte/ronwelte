@@ -1,0 +1,36 @@
+<div *ngIf="!(loginFailed$ | async)">
+  <h3>Please Log In:</h3>
+  <div *ngIf="(isSpinning$ | async)" class="loader"></div>
+  <table>
+    <tr>
+      <td>Username:</td>
+      <td><input id="username" type="text" [formControl]="username"></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><input id="password" type="password" [formControl]="password"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="whatswrong">
+        <button (click)="submit()" [disabled]="isSubmitDisabled()">log in</button>
+        {{whatsWrong()}}
+      </td>
+    </tr>
+  </table>
+</div>
+<table *ngIf="(loginFailed$ | async)">
+  <tr>
+    <td align="center"><h3>Login attempt failed.</h3></td>
+  </tr>
+  <tr>
+    <td>Double check username and password.  Try again.</td>
+  </tr>
+  <tr>
+    <td align="center">
+      <button (click)="handleLoginFailedOkayButton()">
+        okay
+      </button>
+    </td>
+  </tr>
+</table>

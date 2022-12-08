@@ -1,0 +1,7 @@
+<app-tamale-editor *ngIf="'Hidden' != (formState$ | async)" >
+</app-tamale-editor>
+<div *ngIf="'Hidden' == (formState$ | async)">
+  <app-restaurant *ngFor="let item of list$ | async" [restaurant]="item">
+    {{item|json}}
+  </app-restaurant>
+</div>

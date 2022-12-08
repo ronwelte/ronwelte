@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+  background-color: black;
+  color:            #00dddd;
+  font-family:      arial
+}
+
+button {
+  background-color: #ccddFF
+}
+
+a:link {
+  color: #00dd00;
+}
+
+a:visited {
+  color: #999900;
+}

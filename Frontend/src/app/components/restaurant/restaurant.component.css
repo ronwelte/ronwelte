@@ -1,0 +1,6 @@
+.restaurant {
+  height:   360;
+  width:    70%;
+  overflow: auto;
+  background-color: #111155
+}

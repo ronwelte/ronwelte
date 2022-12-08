@@ -1,0 +1,30 @@
+<button *ngIf="!isOpen" (click)="isOpen=true">&nbsp;rate&nbsp;</button>
+<table  *ngIf="isOpen">
+ <tr>
+  <td>
+    <input type="radio" name="group" id="one" value="1" [checked]="userRating == 1" (click)="wow(1)"> 
+  </td>
+  <td>
+    <input type="radio" name="group" id="two" value="2" [checked]="userRating == 2" (click)="wow(2)" >
+  </td>
+  <td>
+    <input type="radio" name="group" id="three" value="3" [checked]="userRating == 3" (click)="wow(3)"> 
+  </td>
+  <td>
+    <input type="radio" name="group" id="four" value="4" [checked]="userRating == 4" (click)="wow(4)"> 
+  </td>
+  <td>
+    <input type="radio" name="group" id="five" value="5" [checked]="userRating == 5" (click)="wow(5)"> 
+  </td>
+  <td><button [disabled]="userRating <= 0" (click)="handleSubmit()">submit</button></td>
+ </tr>
+ <tr>
+  <td align="center">1</td>
+  <td align="center">2</td>
+  <td align="center">3</td>
+  <td align="center">4</td>
+  <td align="center">5</td>
+  <td><button (click)="isOpen=false">cancel</button></td>
+ </tr>
+</table>
+

@@ -1,0 +1,44 @@
+<div *ngIf="mode != 'Delete'">
+  <p>Tamale Editor</p>
+</div>
+<div *ngIf="mode == 'Delete'">
+  <h3><b><i>Permanently Delete this Tamale?</i></b></h3>
+</div>
+
+<table>
+  <tr>
+    <td><label for="name">Tamale Name: </label>                         </td>
+    <td><input id="name" type="text" [formControl]="name">              </td>
+  </tr>
+  <tr>
+    <td><label for="rating">Tamale Rating: </label>                     </td>
+    <td><input id="rating" type="text" [formControl]="rating">          </td>
+  </tr>
+  <tr>
+    <td><label for="price">Tamale Price: </label>                       </td>
+    <td><input id="price" type="text" [formControl]="price">            </td>
+  </tr>
+  <tr>
+    <td><label for="filling">Tamale Filling: </label>                   </td>
+    <td><input id="filling" type="text" [formControl]="filling">        </td>
+  </tr>
+  <tr>
+    <td><label for="description">Tamale Description: </label>           </td>
+    <td><input id="description" type="text" [formControl]="description"></td>
+  </tr>
+  <tr *ngIf="'DeleteTamale' == (formState$ | async)">
+    <td><button (click)="handleCancelButton()">cancel</button>          </td>
+    <td><button (click)="handleSubmitButton()"
+                [disabled]=isSubmitDisabled()><b>delete</b></button>           </td>
+  </tr>
+  <tr *ngIf="'DeleteTamale' != (formState$ | async)">
+    <td><button (click)="handleCancelButton()">cancel</button>          </td>
+    <td><button (click)="handleSubmitButton()"
+                [disabled]=isSubmitDisabled()>submit</button>           </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="whatswrong">{{whatsWrong()}}</td>
+  </tr>
+</table>
+<br>

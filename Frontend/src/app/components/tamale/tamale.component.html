@@ -1,0 +1,74 @@
+<table width="100%" border="0">
+  <tr>
+    <td width="20px"></td>
+    <td width="20%" align="right">Tamale:</td>
+    <td colspan="1"><b>{{tamale.tamaleName}}</b></td>
+    <td align="left" width="50%"><button (click)="handleDeleteButton()">delete</button>
+  </tr>
+  <tr>
+    <td colspan="2" align="right">Rating:</td>
+    <td>{{tamale.tamaleRating}}</td>
+    <td>
+      <app-rating-editor
+        [thingName] = "'Tamale'"
+        [thingId]   = "tamale.tamaleId"
+        [userId]    = "userId"
+        [ratings]   = "tamale.tamaleRatings"
+      >
+      </app-rating-editor>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right">Price:</td>
+    <td>{{tamale.tamalePrice}} </td>
+    <td><button (click)="handleUpdateButton()">update</button>               </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right">Filling:</td>
+    <td>{{tamale.tamaleFilling}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td align="right" valign="top">Comments: </td>
+    <td valign="top">{{tamale.nComments}} </td>
+    <td *ngIf="(listShowing$ | async) == 'TComments'+tamale.tamaleId">
+      <button (click)="handleHideButton()">hide</button>
+      <app-comment *ngFor="let comment of tamale.tamaleComments" [comment]="comment">
+        {{comment | json}}
+      </app-comment>
+      <label for="tamaleCommentText">Add a comment about this tamale:</label>
+      <br>
+      <textarea id="tamaleCommentText"
+                name="tamaleCommentText"
+                [formControl]="comment"
+                rows="4"
+                cols="40"></textarea>
+      <br>
+      <button (click)="handleCommentSubmitButton()">submit comment</button>
+    </td>
+    <td *ngIf="(listShowing$ | async) != 'TComments'+tamale.tamaleId">
+      <button (click)="handleShowListButton('TComments'+tamale.tamaleId)">show</button>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right" valign="top">Pictures: </td>
+    <td valign="top">{{tamale.nImages}} </td>
+    <td *ngIf="(listShowing$ | async) != 'TImages'+tamale.tamaleId">
+      <button (click)="handleShowListButton('TImages'+tamale.tamaleId)">show</button>
+    </td>
+    <td *ngIf="(listShowing$ | async) == 'TImages'+tamale.tamaleId">
+      <button (click)="handleHideButton()">hide</button>
+      <br>
+      <app-image *ngFor="let image of tamale.tamaleImages"
+                 [image]="image">
+      </app-image>
+    </td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <td colspan="2" align="right">Description:</td>
+    <td colspan="2"><i>{{tamale.tamaleDescription}}</i></td>
+  </tr>
+</table>
+<br><br><br>
