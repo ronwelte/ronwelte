@@ -18,6 +18,7 @@ import { TamaleEditorComponent }   from './components/tamale-editor/tamale-edito
 import { RatingEditorComponent }   from './components/rating-editor/rating-editor.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserHeaderComponent } from './components/user-header/user-header.component';
+import { IntroductionComponent } from './components/introduction/introduction.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UserHeaderComponent } from './components/user-header/user-header.compon
     TamaleEditorComponent,
     RatingEditorComponent,
     LoginComponent,
-    UserHeaderComponent
+    UserHeaderComponent,
+    IntroductionComponent
   ],
   imports: [
     BrowserModule,

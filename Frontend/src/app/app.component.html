@@ -1,4 +1,5 @@
-<h3 style="color:lightgreen">The San Diego Tamale Report</h3>
+<app-introduction></app-introduction>
+<h2 style="color:lightgreen">The San Diego Tamale Report</h2>
 <app-user-header *ngIf="(userId$ | async)! > 0"></app-user-header>
 <app-login *ngIf="(userId$ | async)!  <= 0"></app-login>
 <app-restaurant-list *ngIf="(userId$ | async)! > 0"></app-restaurant-list>
