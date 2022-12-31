@@ -3,7 +3,6 @@ import { Store }              from '@ngrx/store';
 import { Observable }         from "rxjs";
 import { AppState }           from './interfaces';
 import { loadRestaurantList } from './data.actions';
-import { incAction }          from './ui.actions';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +20,5 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-//    this.store.dispatch(loadRestaurantList());
   }
 }

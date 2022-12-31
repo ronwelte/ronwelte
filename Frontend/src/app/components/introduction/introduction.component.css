@@ -1,0 +1,18 @@
+.introduction {
+  background-color: #000022;
+  color:            #00EEEE;
+  font-family:      arial
+}
+
+a:link {
+  color:            lightyellow;
+  background-color: transparent;
+  text-decoration:  underline;
+}
+
+a:visited {
+  color:            #CC9900;
+  background-color: transparent;
+  text-decoration:  underline;
+}
+

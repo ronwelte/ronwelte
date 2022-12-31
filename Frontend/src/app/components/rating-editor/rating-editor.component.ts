@@ -44,7 +44,7 @@ export class RatingEditorComponent implements OnInit {
 
   handleSubmit() {
     //
-    // Dispatch an appropriate action base upon Restaurant rating or
+    // Dispatch an appropriate action based upon Restaurant rating or
     // Tamale rating and whether we need to insert or update.
     //
     // If the user already has a rating for this restaurant, UPDATE it
